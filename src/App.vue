@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+  <div id="app" class="container">
+    <PolandPopulation/>
+    <WorldCurrency/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import PolandPopulation from "./components/PolandPopulation";
+import WorldCurrency from "./components/WorldCurrency";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    PolandPopulation,
+    WorldCurrency
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
+@import "bootstrap/scss/bootstrap.scss";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  font-size: 16px;
+}
+
+section {
+  margin: 5rem 0;
 }
 </style>
