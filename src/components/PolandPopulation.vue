@@ -42,7 +42,7 @@ export default {
         datasets: [
           {
             label: "Population of Poland (1960 - 2016)",
-            backgroundColor: "#f87979",
+            borderColor: "#f87979",
             data: this.population
           }
         ]

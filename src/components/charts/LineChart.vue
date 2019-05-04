@@ -9,27 +9,10 @@ export default {
   data() {
     return {
       options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              },
-              gridLines: {
-                display: true
-              }
-            }
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: false
-              }
-            }
-          ]
-        },
-        legend: {
-          display: true
+        elements: {
+          line: {
+            fill: false
+          }
         },
         responsive: true,
         maintainAspectRatio: false

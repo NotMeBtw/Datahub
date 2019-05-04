@@ -2,18 +2,21 @@
   <div id="app" class="container">
     <PolandPopulation/>
     <WorldCurrency/>
+    <PopulationTrends/>
   </div>
 </template>
 
 <script>
 import PolandPopulation from "./components/PolandPopulation";
 import WorldCurrency from "./components/WorldCurrency";
+import PopulationTrends from "./components/PopulationTrends";
 
 export default {
   name: "App",
   components: {
     PolandPopulation,
-    WorldCurrency
+    WorldCurrency,
+    PopulationTrends
   }
 };
 </script>
