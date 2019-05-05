@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section class="container">
+    <h3>The trend of the Polish population in the years 1960 - 2016</h3>
     <line-chart :chart-data="chartData"/>
   </section>
 </template>
@@ -7,10 +8,12 @@
 <script>
 import axios from "axios";
 import LineChart from "@/components/charts/LineChart";
+import Colors from "@/components/Colors";
 
 export default {
   name: "PolandPopulation",
   components: { LineChart },
+  extends: Colors,
   data() {
     return {
       dataset: null,
@@ -41,8 +44,8 @@ export default {
         labels: this.dates,
         datasets: [
           {
-            label: "Population of Poland (1960 - 2016)",
-            borderColor: "#f87979",
+            label: "Population of Poland",
+            borderColor: this.colors.red,
             data: this.population
           }
         ]

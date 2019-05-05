@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section class="container">
+    <h3>Distribution of currencies in use in the world</h3>
     <bar-chart :chart-data="chartData"/>
     <b-list-group class="w-50 m-auto">
       <b-list-group-item class="d-flex justify-content-between align-items-center">
@@ -17,10 +18,12 @@
 <script>
 import axios from "axios";
 import BarChart from "@/components/charts/BarChart";
+import Colors from "@/components/Colors";
 
 export default {
   name: "WorldCurrency",
   components: { BarChart },
+  extends: Colors,
   data() {
     return {
       dataset: null,
@@ -65,8 +68,8 @@ export default {
         labels: this.currenciesArray,
         datasets: [
           {
-            label: "World Currencies' Quantity",
-            backgroundColor: "#f87979",
+            label: "Currency quantity",
+            backgroundColor: this.colors.green,
             data: this.quantity
           }
         ]

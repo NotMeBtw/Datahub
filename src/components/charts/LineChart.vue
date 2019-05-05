@@ -20,6 +20,7 @@ export default {
     };
   },
   mounted() {
+    Chart.defaults.global.defaultFontColor = "#343a40";
     this.renderChart(this.chartData, this.options);
   }
 };
