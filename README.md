@@ -1,4 +1,4 @@
-# datahub
+# Datahub
 
 > A Vue.js project
 
