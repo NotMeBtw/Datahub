@@ -38,7 +38,7 @@ export default {
           .map(d => ({ country: d["Country Code"], value: d.Value }))
       );
 
-      this.map = L.map("map").setView([53, 23], 4);
+      this.map = L.map("map").setView([53, 23], 3);
       this.tileLayer = L.tileLayer(
         "https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png"
       );
@@ -47,16 +47,18 @@ export default {
       const self = this;
       this.geoJson = L.geoJson(this.dataset, {
         onEachFeature: function(feature, layer) {
-          layer.bindPopup(
-            "<h5>" +
-              feature.properties.ADMIN +
-              "</h5><div>Population: " +
-              self.getPop(feature.properties.ISO_A3) +
-              "</div>",
-            { closeButton: false, offset: L.point(0, -20) }
-          );
-          layer.on("mouseover", () => layer.openPopup());
-          layer.on("mouseout", () => layer.closePopup());
+          layer.on("mouseover", e => {
+            var popup = L.popup({ closeButton: false })
+              .setLatLng(layer.getBounds().getCenter())
+              .setContent(
+                "<h5>" +
+                  feature.properties.ADMIN +
+                  "</h5><div>Population: " +
+                  self.getPop(feature.properties.ISO_A3) +
+                  "</div>"
+              )
+              .openOn(self.map);
+          });
         }
       }).addTo(this.map);
     },

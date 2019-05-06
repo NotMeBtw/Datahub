@@ -17,10 +17,9 @@ export default {
   extends: Colors,
   data() {
     return {
-      loading: true,
       dataset: null,
       population: null,
-      date: null,
+      dates: null,
       chartData: {}
     };
   },

@@ -2,17 +2,19 @@
   <section class="container">
     <h3>Distribution of currencies in use in the world</h3>
     <b-spinner class="m-3" v-if="!dataset"/>
-    <bar-chart v-else :chart-data="chartData"/>
-    <b-list-group class="w-50 m-auto">
-      <b-list-group-item class="d-flex justify-content-between align-items-center">
-        Countries:
-        <b-badge variant="primary">{{countries}}</b-badge>
-      </b-list-group-item>
-      <b-list-group-item class="d-flex justify-content-between align-items-center">
-        Countries with Euro:
-        <b-badge variant="primary">{{euroQuantity}}</b-badge>
-      </b-list-group-item>
-    </b-list-group>
+    <div v-else>
+      <bar-chart :chart-data="chartData"/>
+      <b-list-group class="w-50 m-auto">
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          Countries:
+          <b-badge variant="primary">{{countries}}</b-badge>
+        </b-list-group-item>
+        <b-list-group-item class="d-flex justify-content-between align-items-center">
+          Countries with Euro:
+          <b-badge variant="primary">{{euroQuantity}}</b-badge>
+        </b-list-group-item>
+      </b-list-group>
+    </div>
   </section>
 </template>
 
