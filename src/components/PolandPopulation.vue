@@ -1,7 +1,8 @@
 <template>
   <section class="container">
     <h3>The trend of the Polish population in the years 1960 - 2016</h3>
-    <line-chart :chart-data="chartData"/>
+    <b-spinner class="m-3" v-if="!dataset"/>
+    <line-chart v-else :chart-data="chartData"/>
   </section>
 </template>
 
@@ -16,6 +17,7 @@ export default {
   extends: Colors,
   data() {
     return {
+      loading: true,
       dataset: null,
       population: null,
       date: null,
@@ -27,11 +29,7 @@ export default {
   },
   methods: {
     async getData() {
-      this.dataset = await axios
-        .get(
-          "https://pkgstore.datahub.io/core/population/population_json/data/43d34c2353cbd16a0aa8cadfb193af05/population_json.json"
-        )
-        .then(res => res.data);
+      this.dataset = await this.DatasetsService.population;
 
       const polandPopulation = this.dataset.filter(
         d => d["Country Name"] === "Poland"

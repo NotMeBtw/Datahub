@@ -1,7 +1,8 @@
 <template>
   <section class="container">
-    <h3>Comparison of population of United States, European Union Countries and Arab Countries</h3>
-    <line-chart :chart-data="chartData"/>
+    <h3>Comparison of population of United States, European Union and Arabic countries</h3>
+    <b-spinner class="m-3" v-if="!dataset"/>
+    <line-chart v-else :chart-data="chartData"/>
   </section>
 </template>
 
@@ -29,11 +30,7 @@ export default {
   },
   methods: {
     async getData() {
-      this.dataset = await axios
-        .get(
-          "https://pkgstore.datahub.io/core/population/population_json/data/43d34c2353cbd16a0aa8cadfb193af05/population_json.json"
-        )
-        .then(res => res.data);
+      this.dataset = await this.DatasetsService.population;
 
       this.usaPopulation = this.dataset
         .filter(d => d["Country Name"] === "United States")
@@ -65,7 +62,7 @@ export default {
             data: this.euPopulation
           },
           {
-            label: "Arab Countries",
+            label: "Arab World",
             borderColor: this.colors.green,
             data: this.arabPopulation
           }
